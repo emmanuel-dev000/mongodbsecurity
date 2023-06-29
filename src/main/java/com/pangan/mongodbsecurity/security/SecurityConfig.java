@@ -20,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    public static final String AUTH_CONTROLLER_REQUEST_MAPPINGS = "/api/v1/auth/**";
     private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
@@ -33,8 +34,8 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .requestMatchers(HttpMethod.GET)
-                .authenticated()
+                .requestMatchers(AUTH_CONTROLLER_REQUEST_MAPPINGS)
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
