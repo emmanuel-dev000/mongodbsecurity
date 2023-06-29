@@ -6,6 +6,7 @@ public record AuthResponseDto(String accessToken, String tokenType) {
         this(authResponseDtoBuilder.accessToken, authResponseDtoBuilder.tokenType);
     }
 
+    // Source of Builder Pattern inside a record: https://stackoverflow.com/a/70466958
     public static class AuthResponseDtoBuilder {
         private String accessToken;
         private String tokenType = "Bearer ";
